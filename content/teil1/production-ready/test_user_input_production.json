@@ -1,0 +1,381 @@
+{
+  "exam_info": {
+    "level": "A2",
+    "skill": "Hörverstehen",
+    "teil": 1,
+    "ubung": 1,
+    "title": "Goethe A2 Hörverstehen - Teil 1 - Übung 1",
+    "template_name": "teil1_standard"
+  },
+  "instructions": {
+    "main": "Sie hören fünf kurze Texte.",
+    "task": "Wählen Sie bei jeder Aufgabe die richtige Lösung a, b oder c.",
+    "repetition": "Sie hören jeden Text zweimal."
+  },
+  "sections": [
+    {
+      "id": "instructions",
+      "html_element": "instruction-panel",
+      "audio": {
+        "play_count": 1,
+        "estimated_duration": 15.0
+      },
+      "display": {
+        "show_instructions": true,
+        "show_content": false,
+        "show_question": false
+      }
+    },
+    {
+      "id": "text_1",
+      "html_element": "content-panel-1",
+      "content_reference": 1,
+      "audio": {
+        "play_count": 2,
+        "pause_between": 3.0,
+        "estimated_duration": 5.0
+      },
+      "display": {
+        "show_instructions": false,
+        "show_content": true,
+        "show_question": false,
+        "show_setup": true
+      }
+    },
+    {
+      "id": "question_1",
+      "html_element": "question-panel-1",
+      "question_reference": 1,
+      "audio": {
+        "play_count": 1,
+        "pause_after": 30.0,
+        "estimated_duration": 10.395209580838323
+      },
+      "display": {
+        "show_instructions": false,
+        "show_content": false,
+        "show_question": true,
+        "show_options": true
+      }
+    },
+    {
+      "id": "text_2",
+      "html_element": "content-panel-2",
+      "content_reference": 2,
+      "audio": {
+        "play_count": 2,
+        "pause_between": 3.0,
+        "estimated_duration": 5.0
+      },
+      "display": {
+        "show_instructions": false,
+        "show_content": true,
+        "show_question": false,
+        "show_setup": true
+      }
+    },
+    {
+      "id": "question_2",
+      "html_element": "question-panel-2",
+      "question_reference": 2,
+      "audio": {
+        "play_count": 1,
+        "pause_after": 30.0,
+        "estimated_duration": 10.994011976047904
+      },
+      "display": {
+        "show_instructions": false,
+        "show_content": false,
+        "show_question": true,
+        "show_options": true
+      }
+    },
+    {
+      "id": "text_3",
+      "html_element": "content-panel-3",
+      "content_reference": 3,
+      "audio": {
+        "play_count": 2,
+        "pause_between": 3.0,
+        "estimated_duration": 5.0
+      },
+      "display": {
+        "show_instructions": false,
+        "show_content": true,
+        "show_question": false,
+        "show_setup": true
+      }
+    },
+    {
+      "id": "question_3",
+      "html_element": "question-panel-3",
+      "question_reference": 3,
+      "audio": {
+        "play_count": 1,
+        "pause_after": 30.0,
+        "estimated_duration": 10.994011976047904
+      },
+      "display": {
+        "show_instructions": false,
+        "show_content": false,
+        "show_question": true,
+        "show_options": true
+      }
+    },
+    {
+      "id": "text_4",
+      "html_element": "content-panel-4",
+      "content_reference": 4,
+      "audio": {
+        "play_count": 2,
+        "pause_between": 3.0,
+        "estimated_duration": 5.0
+      },
+      "display": {
+        "show_instructions": false,
+        "show_content": true,
+        "show_question": false,
+        "show_setup": true
+      }
+    },
+    {
+      "id": "question_4",
+      "html_element": "question-panel-4",
+      "question_reference": 4,
+      "audio": {
+        "play_count": 1,
+        "pause_after": 30.0,
+        "estimated_duration": 10.395209580838323
+      },
+      "display": {
+        "show_instructions": false,
+        "show_content": false,
+        "show_question": true,
+        "show_options": true
+      }
+    },
+    {
+      "id": "text_5",
+      "html_element": "content-panel-5",
+      "content_reference": 5,
+      "audio": {
+        "play_count": 2,
+        "pause_between": 3.0,
+        "estimated_duration": 5.0
+      },
+      "display": {
+        "show_instructions": false,
+        "show_content": true,
+        "show_question": false,
+        "show_setup": true
+      }
+    },
+    {
+      "id": "question_5",
+      "html_element": "question-panel-5",
+      "question_reference": 5,
+      "audio": {
+        "play_count": 1,
+        "pause_after": 10.0,
+        "estimated_duration": 10.994011976047904
+      },
+      "display": {
+        "show_instructions": false,
+        "show_content": false,
+        "show_question": true,
+        "show_options": true
+      }
+    }
+  ],
+  "content": [
+    {
+      "number": 1,
+      "context": "Nachricht von der Bäckerei",
+      "setup": "Sie hören eine Nachricht von der Bäckerei.",
+      "type": "monologue",
+      "speakers": {
+        "Bäckerei": {
+          "voice_name": "Marlene",
+          "engine": "neural",
+          "fallback_engines": [
+            "standard"
+          ],
+          "language": "de-DE",
+          "gender": "female",
+          "speaking_rate": "medium",
+          "role": "service_provider"
+        }
+      },
+      "text": "Hallo! Ihre Torte ist fertig. Sie kostet zwanzig Euro.",
+      "speaker": "Bäckerei"
+    },
+    {
+      "number": 2,
+      "context": "Ansage in der Bibliothek",
+      "setup": "Sie hören eine Durchsage in der Bibliothek.",
+      "type": "monologue",
+      "speakers": {
+        "Bibliothek": {
+          "voice_name": "Vicki",
+          "engine": "neural",
+          "fallback_engines": [
+            "standard"
+          ],
+          "language": "de-DE",
+          "gender": "female",
+          "speaking_rate": "medium",
+          "role": "service_provider"
+        }
+      },
+      "text": "Die Bibliothek schließt heute um sechzehn Uhr.",
+      "speaker": "Bibliothek"
+    },
+    {
+      "number": 3,
+      "context": "Nachricht vom Sportverein",
+      "setup": "Sie hören eine Nachricht vom Sportverein.",
+      "type": "monologue",
+      "speakers": {
+        "Trainer": {
+          "voice_name": "Hans",
+          "engine": "neural",
+          "fallback_engines": [
+            "standard"
+          ],
+          "language": "de-DE",
+          "gender": "male",
+          "speaking_rate": "medium",
+          "role": "service_provider"
+        }
+      },
+      "text": "Das Training fällt morgen aus wegen Regen.",
+      "speaker": "Trainer"
+    },
+    {
+      "number": 4,
+      "context": "Nachricht vom Optiker",
+      "setup": "Sie hören eine Nachricht vom Optiker.",
+      "type": "monologue",
+      "speakers": {
+        "Optiker": {
+          "voice_name": "Daniel",
+          "engine": "neural",
+          "fallback_engines": [
+            "standard"
+          ],
+          "language": "de-DE",
+          "gender": "male",
+          "speaking_rate": "medium",
+          "role": "service_provider"
+        }
+      },
+      "text": "Ihre Brille ist fertig und kann abgeholt werden.",
+      "speaker": "Optiker"
+    },
+    {
+      "number": 5,
+      "context": "Wetterbericht im Radio",
+      "setup": "Sie hören den Wetterbericht im Radio.",
+      "type": "monologue",
+      "speakers": {
+        "Moderator": {
+          "voice_name": "Marlene",
+          "engine": "neural",
+          "fallback_engines": [
+            "standard"
+          ],
+          "language": "de-DE",
+          "gender": "female",
+          "speaking_rate": "medium",
+          "role": "broadcaster"
+        }
+      },
+      "text": "Heute wird es sonnig mit fünfundzwanzig Grad.",
+      "speaker": "Moderator"
+    }
+  ],
+  "questions": [
+    {
+      "number": 1,
+      "question": "Was kostet die Torte?",
+      "answer_type": "text",
+      "options": {
+        "a": "15 Euro",
+        "b": "20 Euro",
+        "c": "25 Euro"
+      },
+      "correct_answer": "b"
+    },
+    {
+      "number": 2,
+      "question": "Wann schließt die Bibliothek heute?",
+      "answer_type": "text",
+      "options": {
+        "a": "Um 16 Uhr",
+        "b": "Um 17 Uhr",
+        "c": "Um 18 Uhr"
+      },
+      "correct_answer": "a"
+    },
+    {
+      "number": 3,
+      "question": "Warum fällt das Training aus?",
+      "answer_type": "text",
+      "options": {
+        "a": "Wegen Krankheit",
+        "b": "Wegen Regen",
+        "c": "Wegen Feiertag"
+      },
+      "correct_answer": "b"
+    },
+    {
+      "number": 4,
+      "question": "Was kann abgeholt werden?",
+      "answer_type": "text",
+      "options": {
+        "a": "Die Brille",
+        "b": "Die Uhr",
+        "c": "Das Hörgerät"
+      },
+      "correct_answer": "a"
+    },
+    {
+      "number": 5,
+      "question": "Wie wird das Wetter heute?",
+      "answer_type": "text",
+      "options": {
+        "a": "Regnerisch",
+        "b": "Bewölkt",
+        "c": "Sonnig"
+      },
+      "correct_answer": "c"
+    }
+  ],
+  "solutions": [
+    {
+      "number": 1,
+      "answer": "b",
+      "description": "20 Euro"
+    },
+    {
+      "number": 2,
+      "answer": "a",
+      "description": "Um 16 Uhr"
+    },
+    {
+      "number": 3,
+      "answer": "b",
+      "description": "Wegen Regen"
+    },
+    {
+      "number": 4,
+      "answer": "a",
+      "description": "Die Brille"
+    },
+    {
+      "number": 5,
+      "answer": "c",
+      "description": "Sonnig"
+    }
+  ]
+}

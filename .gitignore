@@ -1,0 +1,36 @@
+# Virtual environment
+venv/
+env/
+.env
+
+# Output files (don't commit generated videos/audio)
+output/
+*.mp3
+*.mp4
+*.webm
+*.wav
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# AWS credentials (never commit!)
+.aws/
+credentials
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Node modules (if any)
+node_modules/

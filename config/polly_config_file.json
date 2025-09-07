@@ -1,0 +1,43 @@
+{
+  "region_name": "us-east-1",
+  "voices": {
+    "female_primary": "Marlene",
+    "male_primary": "Hans", 
+    "female_secondary": "Vicki",
+    "male_secondary": "Daniel"
+  },
+  "engines": {
+    "primary": "neural",
+    "fallback": "standard"
+  },
+  "audio_settings": {
+    "output_format": "mp3",
+    "sample_rate": "22050"
+  },
+  "voice_details": {
+    "Marlene": {
+      "engine": "neural",
+      "fallback_engines": ["standard"],
+      "language": "de-DE",
+      "gender": "Female"
+    },
+    "Hans": {
+      "engine": "neural", 
+      "fallback_engines": ["standard"],
+      "language": "de-DE",
+      "gender": "Male"
+    },
+    "Vicki": {
+      "engine": "generative",
+      "fallback_engines": ["neural", "standard"],
+      "language": "de-DE", 
+      "gender": "Female"
+    },
+    "Daniel": {
+      "engine": "generative",
+      "fallback_engines": ["neural", "standard"],
+      "language": "de-DE",
+      "gender": "Male"
+    }
+  }
+}

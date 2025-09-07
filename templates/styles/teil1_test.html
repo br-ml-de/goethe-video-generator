@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{exam_info.title}}</title>
+    <style>
+        /* CSS Custom Properties for easy theming */
+        :root {
+            --primary-color: #2563eb;        /* Professional blue */
+            --secondary-color: #1e40af;      /* Darker blue */
+            --accent-color: #f59e0b;         /* Golden accent */
+            --success-color: #10b981;       /* Green for success */
+            --background: #f8fafc;           /* Light gray background */
+            --card-background: #ffffff;     /* White cards */
+            --text-primary: #1f2937;        /* Dark gray text */
+            --text-secondary: #6b7280;      /* Medium gray text */
+            --border-color: #e5e7eb;        /* Light border */
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --radius: 16px;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: linear-gradient(135deg, var(--background) 0%, #e2e8f0 100%);
+            color: var(--text-primary);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            line-height: 1.6;
+        }
+
+        /* Main container */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            height: 85vh;
+            background: var(--card-background);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 20px 30px;
+            text-align: center;
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+
+        .header h1 {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Progress bar */
+        .progress-container {
+            background: rgba(255, 255, 255, 0.2);
+            height: 4px;
+            margin-top: 15px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--accent-color);
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 2px;
+        }
+
+        /* Content area */
+        .content-area {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Panels */
+        .panel {
+            display: none;
+            width: 100%;
+            text-align: center;
+            animation: slideInFade 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        @keyframes slideInFade {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Instructions panel */
+        .instructions-panel h2 {
+            color: var(--primary-color);
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .instructions-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .instruction-item {
+            background: var(--background);
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-color);
+            text-align: left;
+            font-size: 1.2em;
+        }
+
+        .instruction-item strong {
+            color: var(--primary-color);
+        }
+
+        /* Content panels */
+        .content-panel h2 {
+            color: var(--primary-color);
+            font-size: 2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .task-number {
+            background: var(--accent-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .setup-text {
+            font-size: 1.3em;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .content-text {
+            background: linear-gradient(135deg, var(--background) 0%, #f1f5f9 100%);
+            padding: 35px;
+            border-radius: 12px;
+            font-size: 1.6em;
+            line-height: 1.8;
+            border: 2px solid var(--border-color);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .content-text::before {
+            content: '"';
+            font-size: 4em;
+            color: var(--accent-color);
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            opacity: 0.3;
+        }
+
+        /* Question panels */
+        .question-panel h2 {
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+        }
+
+        .question-text {
+            font-size: 1.5em;
+            margin-bottom: 35px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .options-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .option {
+            background: var(--background);
+            margin: 12px 0;
+            padding: 20px 25px;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            font-size: 1.3em;
+            text-align: left;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .option:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .option-letter {
+            background: var(--primary-color);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .option:hover .option-letter {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Completion panel */
+        .completion-panel {
+            text-align: center;
+        }
+
+        .completion-panel h2 {
+            color: var(--success-color);
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .completion-panel p {
+            font-size: 1.4em;
+            color: var(--text-secondary);
+        }
+
+        .success-icon {
+            font-size: 4em;
+            color: var(--success-color);
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Status indicators */
+        .status-bar {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .audio-indicator {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--accent-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 1em;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .audio-indicator.playing {
+            display: flex;
+            animation: audioGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes audioGlow {
+            from { 
+                background: var(--accent-color);
+                box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+            }
+            to { 
+                background: #f97316;
+                box-shadow: 0 0 20px rgba(249, 115, 22, 0.8);
+            }
+        }
+
+        .thinking-time {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary-color);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-size: 1.1em;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .thinking-time.active {
+            display: flex;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Countdown circle */
+        .countdown {
+            width: 25px;
+            height: 25px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .container {
+                width: 95%;
+                height: 90vh;
+            }
+            
+            .content-area {
+                padding: 30px;
+            }
+            
+            .content-text {
+                font-size: 1.4em;
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Status Bar -->
+    <div class="status-bar" id="status-bar">
+        <span id="status-text">Vorbereitung...</span>
+    </div>
+
+    <!-- Audio Indicator -->
+    <div class="audio-indicator" id="audio-indicator">
+        <div class="countdown"></div>
+        <span>Audio wird abgespielt...</span>
+    </div>
+
+    <!-- Thinking Time Indicator -->
+    <div class="thinking-time" id="thinking-time">
+        <div class="countdown"></div>
+        <span id="thinking-text">Denkzeit: 30 Sekunden</span>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>{{exam_info.title}}</h1>
+            <p class="subtitle">Deutsche Sprachprüfung - Hörverstehen</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Instructions Panel -->
+            <div id="instruction-panel" class="panel instructions-panel active">
+                <h2>📋 Anweisungen</h2>
+                <div class="instructions-list">
+                    <div class="instruction-item">
+                        <strong>Aufgabe:</strong> {{instructions.main}}
+                    </div>
+                    <div class="instruction-item">
+                        <strong>Vorgehen:</strong> {{instructions.task}}
+                    </div>
+                    <div class="instruction-item">
+                        <strong>Wiederholung:</strong> {{instructions.repetition}}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Panels -->
+            <div id="content-panel-1" class="panel content-panel">
+                <h2>
+                    <span class="task-number">1</span>
+                    Aufgabe 1
+                </h2>
+                <div class="setup-text">{{content.1.setup}}</div>
+                <div class="content-text">{{content.1.text}}</div>
+            </div>
+
+            <div id="content-panel-2" class="panel content-panel">
+                <h2>
+                    <span class="task-number">2</span>
+                    Aufgabe 2
+                </h2>
+                <div class="setup-text">{{content.2.setup}}</div>
+                <div class="content-text">{{content.2.text}}</div>
+            </div>
+
+            <div id="content-panel-3" class="panel content-panel">
+                <h2>
+                    <span class="task-number">3</span>
+                    Aufgabe 3
+                </h2>
+                <div class="setup-text">{{content.3.setup}}</div>
+                <div class="content-text">{{content.3.text}}</div>
+            </div>
+
+            <div id="content-panel-4" class="panel content-panel">
+                <h2>
+                    <span class="task-number">4</span>
+                    Aufgabe 4
+                </h2>
+                <div class="setup-text">{{content.4.setup}}</div>
+                <div class="content-text">{{content.4.text}}</div>
+            </div>
+
+            <div id="content-panel-5" class="panel content-panel">
+                <h2>
+                    <span class="task-number">5</span>
+                    Aufgabe 5
+                </h2>
+                <div class="setup-text">{{content.5.setup}}</div>
+                <div class="content-text">{{content.5.text}}</div>
+            </div>
+
+            <!-- Question Panels -->
+            <div id="question-panel-1" class="panel question-panel">
+                <h2>
+                    <span class="task-number">1</span>
+                    Frage 1
+                </h2>
+                <div class="question-text">{{question.1.question}}</div>
+                <div class="options-container">
+                    <div class="option">
+                        <span class="option-letter">a</span>
+                        <span>{{question.1.options.a}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">b</span>
+                        <span>{{question.1.options.b}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">c</span>
+                        <span>{{question.1.options.c}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="question-panel-2" class="panel question-panel">
+                <h2>
+                    <span class="task-number">2</span>
+                    Frage 2
+                </h2>
+                <div class="question-text">{{question.2.question}}</div>
+                <div class="options-container">
+                    <div class="option">
+                        <span class="option-letter">a</span>
+                        <span>{{question.2.options.a}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">b</span>
+                        <span>{{question.2.options.b}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">c</span>
+                        <span>{{question.2.options.c}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="question-panel-3" class="panel question-panel">
+                <h2>
+                    <span class="task-number">3</span>
+                    Frage 3
+                </h2>
+                <div class="question-text">{{question.3.question}}</div>
+                <div class="options-container">
+                    <div class="option">
+                        <span class="option-letter">a</span>
+                        <span>{{question.3.options.a}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">b</span>
+                        <span>{{question.3.options.b}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">c</span>
+                        <span>{{question.3.options.c}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="question-panel-4" class="panel question-panel">
+                <h2>
+                    <span class="task-number">4</span>
+                    Frage 4
+                </h2>
+                <div class="question-text">{{question.4.question}}</div>
+                <div class="options-container">
+                    <div class="option">
+                        <span class="option-letter">a</span>
+                        <span>{{question.4.options.a}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">b</span>
+                        <span>{{question.4.options.b}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">c</span>
+                        <span>{{question.4.options.c}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="question-panel-5" class="panel question-panel">
+                <h2>
+                    <span class="task-number">5</span>
+                    Frage 5
+                </h2>
+                <div class="question-text">{{question.5.question}}</div>
+                <div class="options-container">
+                    <div class="option">
+                        <span class="option-letter">a</span>
+                        <span>{{question.5.options.a}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">b</span>
+                        <span>{{question.5.options.b}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">c</span>
+                        <span>{{question.5.options.c}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Completion Panel -->
+            <div id="completion-panel" class="panel completion-panel">
+                <div class="success-icon">🎉</div>
+                <h2>Übung abgeschlossen!</h2>
+                <p>Vielen Dank für Ihre Teilnahme an der Hörverstehen-Übung.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global state
+        let currentPanel = 'instruction-panel';
+        let currentStep = 0;
+        const totalSteps = 11; // 1 instruction + 5 content + 5 questions
+
+        // Panel management
+        function hideAllPanels() {
+            document.querySelectorAll('.panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+        }
+
+        function showPanel(panelId) {
+            hideAllPanels();
+            const panel = document.getElementById(panelId);
+            if (panel) {
+                panel.classList.add('active');
+                currentPanel = panelId;
+                updateProgress();
+                updateStatus();
+            }
+        }
+
+        // Main navigation functions (called by Playwright)
+        function showInstructions() {
+            showPanel('instruction-panel');
+            showAudioIndicator();
+            currentStep = 0;
+        }
+
+        function showText(number) {
+            showPanel(`content-panel-${number}`);
+            showAudioIndicator();
+            currentStep = number;
+        }
+
+        function showQuestion(number) {
+            showPanel(`question-panel-${number}`);
+            showAudioIndicator();
+            showThinkingTime(number < 5 ? 30 : 10); // Last question gets 10s
+            currentStep = 5 + number;
+        }
+
+        function showCompletion() {
+            showPanel('completion-panel');
+            hideAudioIndicator();
+            hideThinkingTime();
+            currentStep = totalSteps;
+        }
+
+        // Audio indicator management
+        function showAudioIndicator() {
+            document.getElementById('audio-indicator').classList.add('playing');
+        }
+
+        function hideAudioIndicator() {
+            document.getElementById('audio-indicator').classList.remove('playing');
+        }
+
+        // Thinking time management
+        function showThinkingTime(seconds) {
+            const thinkingElement = document.getElementById('thinking-time');
+            const textElement = document.getElementById('thinking-text');
+            
+            textElement.textContent = `Denkzeit: ${seconds} Sekunden`;
+            thinkingElement.classList.add('active');
+            
+            // Auto-hide after the specified time
+            setTimeout(() => {
+                hideThinkingTime();
+            }, seconds * 1000);
+        }
+
+        function hideThinkingTime() {
+            document.getElementById('thinking-time').classList.remove('active');
+        }
+
+        // Progress bar
+        function updateProgress() {
+            const progressBar = document.getElementById('progress-bar');
+            const progressPercent = (currentStep / totalSteps) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+        }
+
+        // Status updates
+        function updateStatus() {
+            const statusText = document.getElementById('status-text');
+            
+            if (currentPanel === 'instruction-panel') {
+                statusText.textContent = 'Anweisungen';
+            } else if (currentPanel.startsWith('content-panel-')) {
+                const num = currentPanel.split('-')[2];
+                statusText.textContent = `Text ${num}`;
+            } else if (currentPanel.startsWith('question-panel-')) {
+                const num = currentPanel.split('-')[2];
+                statusText.textContent = `Frage ${num}`;
+            } else if (currentPanel === 'completion-panel') {
+                statusText.textContent = 'Abgeschlossen ✓';
+            }
+        }
+
+        // Enhanced timing functions for video recording
+        function startTextSequence(number) {
+            showText(number);
+            // Text will be played twice with pause - handled by Playwright timing
+        }
+
+        function startQuestionSequence(number) {
+            hideAudioIndicator(); // Hide during transition
+            setTimeout(() => {
+                showQuestion(number);
+            }, 500); // Brief pause between text and question
+        }
+
+        // Utility functions for testing
+        function simulateAudioPlayback(duration) {
+            showAudioIndicator();
+            setTimeout(() => {
+                hideAudioIndicator();
+            }, duration * 1000);
+        }
+
+        function testSequence() {
+            // Demo sequence for testing the template
+            console.log('🎬 Testing template sequence...');
+            
+            showInstructions();
+            setTimeout(() => showText(1), 2000);
+            setTimeout(() => showQuestion(1), 4000);
+            setTimeout(() => showText(2), 6000);
+            setTimeout(() => showQuestion(2), 8000);
+            setTimeout(() => showCompletion(), 10000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            updateProgress();
+            updateStatus();
+            
+            // Add hover effects to options
+            document.querySelectorAll('.option').forEach(option => {
+                option.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateX(10px) scale(1.02)';
+                });
+                
+                option.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateX(0) scale(1)';
+                });
+            });
+
+            console.log('🎬 Enhanced video template loaded successfully!');
+            console.log('📊 Total steps:', totalSteps);
+            console.log('🧪 To test: call testSequence() in console');
+        });
+
+        // Expose functions globally for Playwright
+        window.showInstructions = showInstructions;
+        window.showText = showText;
+        window.showQuestion = showQuestion;
+        window.showCompletion = showCompletion;
+        window.testSequence = testSequence;
+    </script>
+</body>
+</html>
