@@ -1,0 +1,45 @@
+name: Teil 3 - Short Dialogues + Visual Questions
+description: Five short conversations with visual answers
+timing:
+  thinking_time: 15.0
+  dialogue_play_count: 2
+  pause_between_plays: 3.0
+  visual_question_time: 20.0
+  transition_duration: 2.5
+audio:
+  dialogue_play_count: 2
+  short_conversation_length:
+  - 30
+  - 45
+  speaker_variety: true
+  voice_preferences:
+    dialogue_speakers:
+      gender: mixed
+      rotation: balanced
+    service_contexts:
+    - shop
+    - restaurant
+    - office
+    - public_space
+visual:
+  base_template: teil3_visual.html
+  default_theme: minimalist
+  image_display_mode: medium
+  dialogue_counter: true
+  context_indicators: true
+structure:
+  sections:
+  - type: intro
+    required: true
+  - type: instructions
+    required: true
+  - type: short_dialogues
+    count: 5
+    required: true
+  - type: outro
+    required: true
+  dialogue_pattern:
+  - dialogue_intro
+  - short_dialogue
+  - visual_question
+  - answer_reveal

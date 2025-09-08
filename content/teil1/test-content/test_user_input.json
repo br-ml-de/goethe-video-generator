@@ -3,9 +3,10 @@
     "level": "A2",
     "skill": "Hörverstehen",
     "teil": 1,
+    "format": "teil1_combined_display_with_transitions",
     "ubung": 1,
-    "title": "Goethe A2 Hörverstehen - Teil 1 - Übung 1",
-    "template_name": "teil1_standard"
+    "title": "Goethe A2 Hörverstehen - Teil1 - Übung 1",
+    "template_name": "teil1_flexible"
   },
   "instructions": {
     "main": "Sie hören fünf kurze Texte.",
@@ -14,177 +15,116 @@
   },
   "sections": [
     {
+      "id": "intro",
+      "type": "intro"
+    },
+    {
       "id": "instructions",
-      "html_element": "instruction-panel",
-      "audio": {
-        "play_count": 1,
-        "estimated_duration": 15.0
-      },
-      "display": {
-        "show_instructions": true,
-        "show_content": false,
-        "show_question": false
-      }
+      "type": "instructions"
     },
     {
-      "id": "text_1",
-      "html_element": "content-panel-1",
-      "content_reference": 1,
-      "audio": {
-        "play_count": 2,
-        "pause_between": 3.0,
-        "estimated_duration": 5.0
-      },
-      "display": {
-        "show_instructions": false,
-        "show_content": true,
-        "show_question": false,
-        "show_setup": true
-      }
+      "id": "transition_1",
+      "type": "transition",
+      "transition_text": "Aufgabe 1"
     },
     {
-      "id": "question_1",
-      "html_element": "question-panel-1",
-      "question_reference": 1,
-      "audio": {
-        "play_count": 1,
-        "pause_after": 30.0,
-        "estimated_duration": 10.395209580838323
-      },
-      "display": {
-        "show_instructions": false,
-        "show_content": false,
-        "show_question": true,
-        "show_options": true
-      }
+      "id": "task_1",
+      "type": "combined_task",
+      "task_number": 1,
+      "content_ref": 1,
+      "question_ref": 1
     },
     {
-      "id": "text_2",
-      "html_element": "content-panel-2",
-      "content_reference": 2,
-      "audio": {
-        "play_count": 2,
-        "pause_between": 3.0,
-        "estimated_duration": 5.0
-      },
-      "display": {
-        "show_instructions": false,
-        "show_content": true,
-        "show_question": false,
-        "show_setup": true
-      }
+      "id": "answer_1",
+      "type": "answer_reveal",
+      "task_number": 1,
+      "correct_answer": "b",
+      "answer_text": "20 Euro"
     },
     {
-      "id": "question_2",
-      "html_element": "question-panel-2",
-      "question_reference": 2,
-      "audio": {
-        "play_count": 1,
-        "pause_after": 30.0,
-        "estimated_duration": 10.994011976047904
-      },
-      "display": {
-        "show_instructions": false,
-        "show_content": false,
-        "show_question": true,
-        "show_options": true
-      }
+      "id": "transition_2",
+      "type": "transition",
+      "transition_text": "Aufgabe 2"
     },
     {
-      "id": "text_3",
-      "html_element": "content-panel-3",
-      "content_reference": 3,
-      "audio": {
-        "play_count": 2,
-        "pause_between": 3.0,
-        "estimated_duration": 5.0
-      },
-      "display": {
-        "show_instructions": false,
-        "show_content": true,
-        "show_question": false,
-        "show_setup": true
-      }
+      "id": "task_2",
+      "type": "combined_task",
+      "task_number": 2,
+      "content_ref": 2,
+      "question_ref": 2
     },
     {
-      "id": "question_3",
-      "html_element": "question-panel-3",
-      "question_reference": 3,
-      "audio": {
-        "play_count": 1,
-        "pause_after": 30.0,
-        "estimated_duration": 10.994011976047904
-      },
-      "display": {
-        "show_instructions": false,
-        "show_content": false,
-        "show_question": true,
-        "show_options": true
-      }
+      "id": "answer_2",
+      "type": "answer_reveal",
+      "task_number": 2,
+      "correct_answer": "a",
+      "answer_text": "Um 16 Uhr"
     },
     {
-      "id": "text_4",
-      "html_element": "content-panel-4",
-      "content_reference": 4,
-      "audio": {
-        "play_count": 2,
-        "pause_between": 3.0,
-        "estimated_duration": 5.0
-      },
-      "display": {
-        "show_instructions": false,
-        "show_content": true,
-        "show_question": false,
-        "show_setup": true
-      }
+      "id": "transition_3",
+      "type": "transition",
+      "transition_text": "Aufgabe 3"
     },
     {
-      "id": "question_4",
-      "html_element": "question-panel-4",
-      "question_reference": 4,
-      "audio": {
-        "play_count": 1,
-        "pause_after": 30.0,
-        "estimated_duration": 10.395209580838323
-      },
-      "display": {
-        "show_instructions": false,
-        "show_content": false,
-        "show_question": true,
-        "show_options": true
-      }
+      "id": "task_3",
+      "type": "combined_task",
+      "task_number": 3,
+      "content_ref": 3,
+      "question_ref": 3
     },
     {
-      "id": "text_5",
-      "html_element": "content-panel-5",
-      "content_reference": 5,
-      "audio": {
-        "play_count": 2,
-        "pause_between": 3.0,
-        "estimated_duration": 5.0
-      },
-      "display": {
-        "show_instructions": false,
-        "show_content": true,
-        "show_question": false,
-        "show_setup": true
-      }
+      "id": "answer_3",
+      "type": "answer_reveal",
+      "task_number": 3,
+      "correct_answer": "b",
+      "answer_text": "Wegen Regen"
     },
     {
-      "id": "question_5",
-      "html_element": "question-panel-5",
-      "question_reference": 5,
-      "audio": {
-        "play_count": 1,
-        "pause_after": 10.0,
-        "estimated_duration": 10.994011976047904
-      },
-      "display": {
-        "show_instructions": false,
-        "show_content": false,
-        "show_question": true,
-        "show_options": true
-      }
+      "id": "transition_4",
+      "type": "transition",
+      "transition_text": "Aufgabe 4"
+    },
+    {
+      "id": "task_4",
+      "type": "combined_task",
+      "task_number": 4,
+      "content_ref": 4,
+      "question_ref": 4
+    },
+    {
+      "id": "answer_4",
+      "type": "answer_reveal",
+      "task_number": 4,
+      "correct_answer": "a",
+      "answer_text": "Die Brille"
+    },
+    {
+      "id": "transition_5",
+      "type": "transition",
+      "transition_text": "Aufgabe 5"
+    },
+    {
+      "id": "task_5",
+      "type": "combined_task",
+      "task_number": 5,
+      "content_ref": 5,
+      "question_ref": 5
+    },
+    {
+      "id": "answer_5",
+      "type": "answer_reveal",
+      "task_number": 5,
+      "correct_answer": "c",
+      "answer_text": "Sonnig"
+    },
+    {
+      "id": "transition_end",
+      "type": "transition",
+      "transition_text": "Ende der Übung"
+    },
+    {
+      "id": "outro",
+      "type": "outro"
     }
   ],
   "content": [

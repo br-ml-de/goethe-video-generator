@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>{{exam_info.title}}</title>
+    <style>
+        .sync-panel { display: none; }
+        .sync-panel.active { display: block; padding: 20px; border: 2px solid blue; margin: 10px; }
+        .sync-timer { position: fixed; top: 10px; right: 10px; background: black; color: white; padding: 5px; }
+        .sync-audio-indicator { position: fixed; top: 10px; left: 10px; background: red; color: white; padding: 5px; display: none; }
+        .sync-indicators .active { display: block !important; }
+        .transition-panel { background: yellow; text-align: center; }
+        .answer-panel { background: green; color: white; }
+    </style>
+</head>
+<body>
+    <div class="sync-indicators">
+        <div id="sync-timer" class="sync-timer"><span id="timer-display">00:00</span></div>
+        <div id="sync-audio-indicator" class="sync-audio-indicator">AUDIO</div>
+    </div>
+
+    <!-- Universal panels -->
+    <div id="intro-panel" class="sync-panel">
+        <h1>INTRO - Goethe A2 Teil 1</h1>
+        <p>Deutsche Hörverständnis Übung</p>
+    </div>
+    
+    <div id="instruction-panel" class="sync-panel">
+        <h1>ANWEISUNGEN</h1>
+        <p>{{instructions.main}}</p>
+        <p>{{instructions.task}}</p>
+        <p>{{instructions.repetition}}</p>
+    </div>
+
+    <!-- Dynamic transition panel -->
+    <div id="transition-panel" class="sync-panel transition-panel">
+        <h1 id="transition-text">TRANSITION</h1>
+    </div>
+
+    <!-- Task panels with actual content -->
+    <div id="task-1" class="sync-panel">
+        <h2>AUFGABE 1</h2>
+        <p><strong>Sie hören eine Nachricht von der Bäckerei.</strong></p>
+        <div style="background: #f0f0f0; padding: 10px; margin: 10px 0;">
+            <strong>Hallo! Ihre Torte ist fertig. Sie kostet zwanzig Euro.</strong>
+        </div>
+        <h3>Was kostet die Torte?</h3>
+        <p>a) 15 Euro</p>
+        <p>b) 20 Euro</p>
+        <p>c) 25 Euro</p>
+    </div>
+
+    <div id="answer-1" class="sync-panel answer-panel">
+        <h2>ANTWORT AUFGABE 1</h2>
+        <h3>Die richtige Antwort ist b: 20 Euro</h3>
+    </div>
+
+    <!-- Repeat for all 5 tasks -->
+    <div id="task-2" class="sync-panel">
+        <h2>AUFGABE 2</h2>
+        <p><strong>Sie hören eine Durchsage in der Bibliothek.</strong></p>
+        <div style="background: #f0f0f0; padding: 10px; margin: 10px 0;">
+            <strong>Die Bibliothek schließt heute um sechzehn Uhr.</strong>
+        </div>
+        <h3>Wann schließt die Bibliothek heute?</h3>
+        <p>a) Um 16 Uhr</p>
+        <p>b) Um 17 Uhr</p>
+        <p>c) Um 18 Uhr</p>
+    </div>
+
+    <div id="answer-2" class="sync-panel answer-panel">
+        <h2>ANTWORT AUFGABE 2</h2>
+        <h3>Die richtige Antwort ist a: Um 16 Uhr</h3>
+    </div>
+
+    <div id="task-3" class="sync-panel">
+        <h2>AUFGABE 3</h2>
+        <p><strong>Sie hören eine Nachricht vom Sportverein.</strong></p>
+        <div style="background: #f0f0f0; padding: 10px; margin: 10px 0;">
+            <strong>Das Training fällt morgen aus wegen Regen.</strong>
+        </div>
+        <h3>Warum fällt das Training aus?</h3>
+        <p>a) Wegen Krankheit</p>
+        <p>b) Wegen Regen</p>
+        <p>c) Wegen Feiertag</p>
+    </div>
+
+    <div id="answer-3" class="sync-panel answer-panel">
+        <h2>ANTWORT AUFGABE 3</h2>
+        <h3>Die richtige Antwort ist b: Wegen Regen</h3>
+    </div>
+
+    <div id="task-4" class="sync-panel">
+        <h2>AUFGABE 4</h2>
+        <p><strong>Sie hören eine Nachricht vom Optiker.</strong></p>
+        <div style="background: #f0f0f0; padding: 10px; margin: 10px 0;">
+            <strong>Ihre Brille ist fertig und kann abgeholt werden.</strong>
+        </div>
+        <h3>Was kann abgeholt werden?</h3>
+        <p>a) Die Brille</p>
+        <p>b) Die Uhr</p>
+        <p>c) Das Hörgerät</p>
+    </div>
+
+    <div id="answer-4" class="sync-panel answer-panel">
+        <h2>ANTWORT AUFGABE 4</h2>
+        <h3>Die richtige Antwort ist a: Die Brille</h3>
+    </div>
+
+    <div id="task-5" class="sync-panel">
+        <h2>AUFGABE 5</h2>
+        <p><strong>Sie hören den Wetterbericht im Radio.</strong></p>
+        <div style="background: #f0f0f0; padding: 10px; margin: 10px 0;">
+            <strong>Heute wird es sonnig mit fünfundzwanzig Grad.</strong>
+        </div>
+        <h3>Wie wird das Wetter heute?</h3>
+        <p>a) Regnerisch</p>
+        <p>b) Bewölkt</p>
+        <p>c) Sonnig</p>
+    </div>
+
+    <div id="answer-5" class="sync-panel answer-panel">
+        <h2>ANTWORT AUFGABE 5</h2>
+        <h3>Die richtige Antwort ist c: Sonnig</h3>
+    </div>
+
+    <div id="outro-panel" class="sync-panel">
+        <h1>OUTRO</h1>
+        <p>Vielen Dank für Ihre Teilnahme!</p>
+        <p>Weitere Übungen finden Sie auf unserem Kanal.</p>
+    </div>
+
+    <script>
+        class FlexibleVideoSynchronizer {
+            constructor() {
+                this.startTime = Date.now();
+                console.log('🎬 Teil 1 Flexible Template Ready');
+                this.showPanel('intro-panel');
+            }
+            
+            showPanel(panelId) {
+                document.querySelectorAll('.sync-panel').forEach(p => p.classList.remove('active'));
+                const panel = document.getElementById(panelId);
+                if (panel) {
+                    panel.classList.add('active');
+                    console.log(`✅ Showing: ${panelId}`);
+                } else {
+                    console.error(`❌ Panel not found: ${panelId}`);
+                }
+            }
+            
+            showTransition(text) { 
+                document.getElementById('transition-text').textContent = text;
+                this.showPanel('transition-panel'); 
+            }
+            showCombinedTask(n) { this.showPanel(`task-${n}`); }
+            showAnswerReveal(n, correctAnswer, answerText) { this.showPanel(`answer-${n}`); }
+            showIntro() { this.showPanel('intro-panel'); }
+            showInstructions() { this.showPanel('instruction-panel'); }
+            showOutro() { this.showPanel('outro-panel'); }
+            showCompletion() { console.log('✅ Complete'); }
+            getCurrentTime() { return (Date.now() - this.startTime) / 1000; }
+        }
+
+        let videoSync;
+        document.addEventListener('DOMContentLoaded', function() {
+            videoSync = new FlexibleVideoSynchronizer();
+            window.showTransition = (text) => videoSync.showTransition(text);
+            window.showCombinedTask = (n) => videoSync.showCombinedTask(n);
+            window.showAnswerReveal = (n, a, t) => videoSync.showAnswerReveal(n, a, t);
+            window.showIntro = () => videoSync.showIntro();
+            window.showInstructions = () => videoSync.showInstructions();
+            window.showOutro = () => videoSync.showOutro();
+            window.showCompletion = () => videoSync.showCompletion();
+            window.videoSync = videoSync;
+            console.log('✅ Template functions ready');
+        });
+    </script>
+</body>
+</html>

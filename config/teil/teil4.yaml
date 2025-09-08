@@ -1,0 +1,53 @@
+name: Teil 4 - Interview + Text Questions
+description: Long interview with traditional text-based questions
+timing:
+  thinking_time: 30.0
+  interview_play_count: 1
+  question_spacing: 15.0
+  analysis_time: 45.0
+  transition_duration: 3.0
+audio:
+  interview_play_count: 1
+  interview_length:
+  - 240
+  - 300
+  question_play_count: 1
+  complex_vocabulary: true
+  voice_preferences:
+    interviewer:
+      gender: female
+      professional_tone: true
+    interviewee:
+      gender: mixed
+      natural_speech: true
+    instructor:
+      gender: female
+      clear_diction: true
+visual:
+  base_template: teil4_interview.html
+  default_theme: professional
+  show_interview_progress: true
+  question_display_mode: text_focus
+  background_complexity: minimal
+structure:
+  sections:
+  - type: intro
+    required: true
+  - type: instructions
+    required: true
+  - type: interview
+    length: 4-5 minutes
+    required: true
+  - type: processing_time
+    duration: 45
+    required: true
+  - type: text_questions
+    count: 8
+    required: true
+  - type: outro
+    required: true
+  interview_structure:
+    topic_complexity: personal_experience
+    vocabulary_level: B1_bridge
+    speech_rate: natural
+    accent_variety: standard_german

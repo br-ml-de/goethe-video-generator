@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{exam_info.title}}</title>
+    <style>
+        /* CSS Custom Properties for easy theming */
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --accent-color: #f59e0b;
+            --success-color: #10b981;
+            --background: #f8fafc;
+            --card-background: #ffffff;
+            --text-primary: #1f2937;
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            --radius: 16px;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background: linear-gradient(135deg, var(--background) 0%, #e2e8f0 100%);
+            color: var(--text-primary);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            line-height: 1.6;
+        }
+
+        /* Main container */
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            height: 85vh;
+            background: var(--card-background);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 20px 30px;
+            text-align: center;
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+
+        .header h1 {
+            font-size: 1.8em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .header .subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        /* Progress bar */
+        .progress-container {
+            background: rgba(255, 255, 255, 0.2);
+            height: 6px;
+            margin-top: 15px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--accent-color);
+            width: 0%;
+            transition: width 0.8s ease;
+            border-radius: 3px;
+        }
+
+        /* Timer display */
+        .timer-display {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 1em;
+            font-family: monospace;
+            z-index: 1000;
+        }
+
+        /* Content area */
+        .content-area {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Panels */
+        .panel {
+            display: none;
+            width: 100%;
+            text-align: center;
+            animation: slideInFade 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        @keyframes slideInFade {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Intro/Outro panels */
+        .intro-panel, .outro-panel {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            border-radius: var(--radius);
+            padding: 60px 40px;
+            margin: 20px;
+            text-align: center;
+        }
+
+        .intro-panel h1, .outro-panel h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .intro-panel p, .outro-panel p {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .channel-info {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .channel-info .channel-name {
+            font-size: 1.6em;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        /* Instructions panel */
+        .instructions-panel h2 {
+            color: var(--primary-color);
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .instructions-list {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .instruction-item {
+            background: var(--background);
+            margin: 15px 0;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-color);
+            text-align: left;
+            font-size: 1.2em;
+        }
+
+        .instruction-item strong {
+            color: var(--primary-color);
+        }
+
+        /* Content panels */
+        .content-panel h2 {
+            color: var(--primary-color);
+            font-size: 2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .task-number {
+            background: var(--accent-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .setup-text {
+            font-size: 1.3em;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .content-text {
+            background: linear-gradient(135deg, var(--background) 0%, #f1f5f9 100%);
+            padding: 35px;
+            border-radius: 12px;
+            font-size: 1.6em;
+            line-height: 1.8;
+            border: 2px solid var(--border-color);
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .content-text::before {
+            content: '"';
+            font-size: 4em;
+            color: var(--accent-color);
+            position: absolute;
+            top: -10px;
+            left: 15px;
+            opacity: 0.3;
+        }
+
+        /* Question panels */
+        .question-panel h2 {
+            color: var(--secondary-color);
+            margin-bottom: 30px;
+        }
+
+        .question-text {
+            font-size: 1.5em;
+            margin-bottom: 35px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .options-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .option {
+            background: var(--background);
+            margin: 12px 0;
+            padding: 20px 25px;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            font-size: 1.3em;
+            text-align: left;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .option:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .option-letter {
+            background: var(--primary-color);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .option:hover .option-letter {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Thinking time indicator */
+        .thinking-indicator {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary-color);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-size: 1.1em;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .thinking-indicator.active {
+            display: flex;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .countdown-circle {
+            width: 25px;
+            height: 25px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Audio playing indicator */
+        .audio-playing {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: var(--accent-color);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 1em;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .audio-playing.active {
+            display: flex;
+            animation: audioGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes audioGlow {
+            from { 
+                background: var(--accent-color);
+                box-shadow: 0 0 10px rgba(245, 158, 11, 0.5);
+            }
+            to { 
+                background: #f97316;
+                box-shadow: 0 0 20px rgba(249, 115, 22, 0.8);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Timer Display -->
+    <div class="timer-display" id="timer-display">00:00</div>
+
+    <!-- Audio Playing Indicator -->
+    <div class="audio-playing" id="audio-playing">
+        <div class="countdown-circle"></div>
+        <span>Audio wird abgespielt...</span>
+    </div>
+
+    <!-- Thinking Time Indicator -->
+    <div class="thinking-indicator" id="thinking-indicator">
+        <div class="countdown-circle"></div>
+        <span id="thinking-text">Denkzeit: 30 Sekunden</span>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>{{exam_info.title}}</h1>
+            <p class="subtitle">Deutsche Sprachprüfung - Hörverstehen</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Intro Panel -->
+            <div id="intro-panel" class="panel intro-panel active">
+                <h1>🎓 Willkommen</h1>
+                <p>Deutsche Sprachprüfung</p>
+                <p>Hörverstehen - Teil 1</p>
+                <div class="channel-info">
+                    <div class="channel-name">{{channel_name | default('Zielort Deutschland')}}</div>
+                    <p>Ihr Partner für deutsche Sprachprüfungen</p>
+                </div>
+            </div>
+
+            <!-- Instructions Panel -->
+            <div id="instruction-panel" class="panel instructions-panel">
+                <h2>📋 Anweisungen</h2>
+                <div class="instructions-list">
+                    <div class="instruction-item">
+                        <strong>Aufgabe:</strong> {{instructions.main}}
+                    </div>
+                    <div class="instruction-item">
+                        <strong>Vorgehen:</strong> {{instructions.task}}
+                    </div>
+                    <div class="instruction-item">
+                        <strong>Wiederholung:</strong> {{instructions.repetition}}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Panels -->
+            <div id="content-panel-1" class="panel content-panel">
+                <h2>
+                    <span class="task-number">1</span>
+                    Aufgabe 1
+                </h2>
+                <div class="setup-text">{{content.1.setup}}</div>
+                <div class="content-text">{{content.1.text}}</div>
+            </div>
+
+            <div id="content-panel-2" class="panel content-panel">
+                <h2>
+                    <span class="task-number">2</span>
+                    Aufgabe 2
+                </h2>
+                <div class="setup-text">{{content.2.setup}}</div>
+                <div class="content-text">{{content.2.text}}</div>
+            </div>
+
+            <div id="content-panel-3" class="panel content-panel">
+                <h2>
+                    <span class="task-number">3</span>
+                    Aufgabe 3
+                </h2>
+                <div class="setup-text">{{content.3.setup}}</div>
+                <div class="content-text">{{content.3.text}}</div>
+            </div>
+
+            <div id="content-panel-4" class="panel content-panel">
+                <h2>
+                    <span class="task-number">4</span>
+                    Aufgabe 4
+                </h2>
+                <div class="setup-text">{{content.4.setup}}</div>
+                <div class="content-text">{{content.4.text}}</div>
+            </div>
+
+            <div id="content-panel-5" class="panel content-panel">
+                <h2>
+                    <span class="task-number">5</span>
+                    Aufgabe 5
+                </h2>
+                <div class="setup-text">{{content.5.setup}}</div>
+                <div class="content-text">{{content.5.text}}</div>
+            </div>
+
+            <!-- Question Panels -->
+            <div id="question-panel-1" class="panel question-panel">
+                <h2>
+                    <span class="task-number">1</span>
+                    Frage 1
+                </h2>
+                <div class="question-text">{{question.1.question}}</div>
+                <div class="options-container">
+                    <div class="option">
+                        <span class="option-letter">a</span>
+                        <span>{{question.1.options.a}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">b</span>
+                        <span>{{question.1.options.b}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">c</span>
+                        <span>{{question.1.options.c}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="question-panel-2" class="panel question-panel">
+                <h2>
+                    <span class="task-number">2</span>
+                    Frage 2
+                </h2>
+                <div class="question-text">{{question.2.question}}</div>
+                <div class="options-container">
+                    <div class="option">
+                        <span class="option-letter">a</span>
+                        <span>{{question.2.options.a}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">b</span>
+                        <span>{{question.2.options.b}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">c</span>
+                        <span>{{question.2.options.c}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="question-panel-3" class="panel question-panel">
+                <h2>
+                    <span class="task-number">3</span>
+                    Frage 3
+                </h2>
+                <div class="question-text">{{question.3.question}}</div>
+                <div class="options-container">
+                    <div class="option">
+                        <span class="option-letter">a</span>
+                        <span>{{question.3.options.a}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">b</span>
+                        <span>{{question.3.options.b}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">c</span>
+                        <span>{{question.3.options.c}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="question-panel-4" class="panel question-panel">
+                <h2>
+                    <span class="task-number">4</span>
+                    Frage 4
+                </h2>
+                <div class="question-text">{{question.4.question}}</div>
+                <div class="options-container">
+                    <div class="option">
+                        <span class="option-letter">a</span>
+                        <span>{{question.4.options.a}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">b</span>
+                        <span>{{question.4.options.b}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">c</span>
+                        <span>{{question.4.options.c}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div id="question-panel-5" class="panel question-panel">
+                <h2>
+                    <span class="task-number">5</span>
+                    Frage 5
+                </h2>
+                <div class="question-text">{{question.5.question}}</div>
+                <div class="options-container">
+                    <div class="option">
+                        <span class="option-letter">a</span>
+                        <span>{{question.5.options.a}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">b</span>
+                        <span>{{question.5.options.b}}</span>
+                    </div>
+                    <div class="option">
+                        <span class="option-letter">c</span>
+                        <span>{{question.5.options.c}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Outro Panel -->
+            <div id="outro-panel" class="panel outro-panel">
+                <h1>🎉 Vielen Dank!</h1>
+                <p>Sie haben die Übung erfolgreich abgeschlossen.</p>
+                <p>Weitere Übungen finden Sie auf unserem Kanal.</p>
+                <div class="channel-info">
+                    <div class="channel-name">{{channel_name | default('Zielort Deutschland')}}</div>
+                    <p>👍 Vergessen Sie nicht zu liken und zu abonnieren!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Synchronized timing system
+        class VideoSynchronizer {
+            constructor() {
+                this.startTime = null;
+                this.currentStep = 0;
+                this.audioSequence = null;
+                this.timerInterval = null;
+                
+                // Initialize
+                this.initializeTimer();
+                this.showIntro();
+            }
+
+            initializeTimer() {
+                this.startTime = Date.now();
+                this.timerInterval = setInterval(() => {
+                    this.updateTimer();
+                }, 100); // Update every 100ms for smooth display
+            }
+
+            updateTimer() {
+                if (!this.startTime) return;
+                
+                const elapsed = (Date.now() - this.startTime) / 1000;
+                const minutes = Math.floor(elapsed / 60);
+                const seconds = Math.floor(elapsed % 60);
+                
+                document.getElementById('timer-display').textContent = 
+                    `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+
+            getCurrentTime() {
+                return this.startTime ? (Date.now() - this.startTime) / 1000 : 0;
+            }
+
+            // Panel management
+            hideAllPanels() {
+                document.querySelectorAll('.panel').forEach(panel => {
+                    panel.classList.remove('active');
+                });
+            }
+
+            showPanel(panelId) {
+                console.log(`🎬 Showing panel: ${panelId} at ${this.getCurrentTime().toFixed(1)}s`);
+                this.hideAllPanels();
+                const panel = document.getElementById(panelId);
+                if (panel) {
+                    panel.classList.add('active');
+                    this.updateProgress();
+                }
+            }
+
+            updateProgress() {
+                const progressBar = document.getElementById('progress-bar');
+                const totalSteps = 13; // intro + instructions + 5 content + 5 questions + outro
+                const progressPercent = (this.currentStep / totalSteps) * 100;
+                progressBar.style.width = `${progressPercent}%`;
+            }
+
+            // Audio indicators
+            showAudioIndicator() {
+                document.getElementById('audio-playing').classList.add('active');
+            }
+
+            hideAudioIndicator() {
+                document.getElementById('audio-playing').classList.remove('active');
+            }
+
+            showThinkingTime(seconds) {
+                const indicator = document.getElementById('thinking-indicator');
+                const text = document.getElementById('thinking-text');
+                
+                text.textContent = `Denkzeit: ${seconds} Sekunden`;
+                indicator.classList.add('active');
+                
+                setTimeout(() => {
+                    indicator.classList.remove('active');
+                }, seconds * 1000);
+            }
+
+            // Main sequence functions (called by Playwright)
+            showIntro() {
+                this.showPanel('intro-panel');
+                this.showAudioIndicator();
+                this.currentStep = 0;
+                console.log('🎬 Intro started');
+            }
+
+            showInstructions() {
+                this.showPanel('instruction-panel');
+                this.showAudioIndicator();
+                this.currentStep = 1;
+                console.log('📋 Instructions started');
+            }
+
+            showText(number) {
+                this.showPanel(`content-panel-${number}`);
+                this.showAudioIndicator();
+                this.currentStep = 1 + number;
+                console.log(`📝 Text ${number} started`);
+            }
+
+            showQuestion(number) {
+                this.hideAudioIndicator();
+                
+                // Brief pause before showing question
+                setTimeout(() => {
+                    this.showPanel(`question-panel-${number}`);
+                    this.showAudioIndicator();
+                    
+                    // Show thinking time
+                    const thinkingTime = number < 5 ? 30 : 10;
+                    this.showThinkingTime(thinkingTime);
+                    
+                    this.currentStep = 6 + number;
+                    console.log(`❓ Question ${number} started with ${thinkingTime}s thinking time`);
+                }, 500);
+            }
+
+            showOutro() {
+                this.showPanel('outro-panel');
+                this.showAudioIndicator();
+                this.currentStep = 12;
+                console.log('🎉 Outro started');
+            }
+
+            showCompletion() {
+                this.hideAudioIndicator();
+                this.currentStep = 13;
+                console.log('✅ Video sequence completed');
+                
+                // Stop timer
+                if (this.timerInterval) {
+                    clearInterval(this.timerInterval);
+                }
+            }
+
+            // Synchronized execution based on audio sequence
+            async executeAudioSequence(audioSequence) {
+                this.audioSequence = audioSequence;
+                console.log('🎵 Executing synchronized audio sequence');
+                
+                for (let i = 0; i < audioSequence.sequence.length; i++) {
+                    const step = audioSequence.sequence[i];
+                    
+                    // Wait until the correct time
+                    await this.waitUntilTime(step.start_time);
+                    
+                    // Execute the step
+                    await this.executeStep(step);
+                }
+                
+                // Show completion
+                this.showCompletion();
+            }
+
+            async waitUntilTime(targetTime) {
+                return new Promise(resolve => {
+                    const checkTime = () => {
+                        const currentTime = this.getCurrentTime();
+                        if (currentTime >= targetTime) {
+                            resolve();
+                        } else {
+                            setTimeout(checkTime, 50); // Check every 50ms
+                        }
+                    };
+                    checkTime();
+                });
+            }
+
+            async executeStep(step) {
+                const { type, number, duration, total_duration } = step;
+                
+                console.log(`🎵 Step: ${type} ${number || ''} (${total_duration || duration}s)`);
+                
+                switch (type) {
+                    case 'intro':
+                        this.showIntro();
+                        break;
+                    case 'instructions':
+                        this.showInstructions();
+                        break;
+                    case 'text':
+                        this.showText(number);
+                        break;
+                    case 'question':
+                        this.showQuestion(number);
+                        break;
+                    case 'outro':
+                        this.showOutro();
+                        break;
+                }
+                
+                // Wait for step duration
+                await new Promise(resolve => {
+                    setTimeout(resolve, (total_duration || duration) * 1000);
+                });
+            }
+
+            // Test sequence for development
+            testSequence() {
+                console.log('🧪 Running test sequence...');
+                
+                const testAudioSequence = {
+                    sequence: [
+                        { type: 'intro', start_time: 0, duration: 3 },
+                        { type: 'instructions', start_time: 3, duration: 3 },
+                        { type: 'text', number: 1, start_time: 6, total_duration: 3 },
+                        { type: 'question', number: 1, start_time: 9, total_duration: 5 },
+                        { type: 'outro', start_time: 14, duration: 3 }
+                    ]
+                };
+                
+                this.executeAudioSequence(testAudioSequence);
+            }
+        }
+
+        // Initialize synchronizer
+        let videoSync;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            videoSync = new VideoSynchronizer();
+            
+            // Expose functions globally for Playwright
+            window.showIntro = () => videoSync.showIntro();
+            window.showInstructions = () => videoSync.showInstructions();
+            window.showText = (number) => videoSync.showText(number);
+            window.showQuestion = (number) => videoSync.showQuestion(number);
+            window.showOutro = () => videoSync.showOutro();
+            window.showCompletion = () => videoSync.showCompletion();
+            window.executeAudioSequence = (sequence) => videoSync.executeAudioSequence(sequence);
+            window.testSequence = () => videoSync.testSequence();
+            window.getCurrentTime = () => videoSync.getCurrentTime();
+            
+            console.log('🎬 Synchronized template loaded successfully!');
+            console.log('🧪 To test: call testSequence() in console');
+        });
+    </script>
+</body>
+</html>

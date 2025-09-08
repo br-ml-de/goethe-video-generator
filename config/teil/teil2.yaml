@@ -1,0 +1,48 @@
+name: Teil 2 - Long Conversation + Visual Questions
+description: One long conversation followed by visual multiple choice
+timing:
+  thinking_time: 20.0
+  conversation_play_count: 1
+  visual_question_time: 25.0
+  transition_duration: 3.0
+  answer_reveal_pause: 3.0
+audio:
+  conversation_play_count: 1
+  question_play_count: 1
+  dialogue_pause_between_speakers: 0.4
+  natural_conversation_flow: true
+  voice_preferences:
+    dialogue_speakers:
+      gender: mixed
+      distinct_voices: true
+    instructor:
+      gender: female
+      primary_voice: Marlene
+visual:
+  base_template: teil2_visual.html
+  default_theme: professional
+  image_display_mode: large
+  question_layout: visual_grid
+  show_conversation_transcript: false
+structure:
+  sections:
+  - type: intro
+    required: true
+  - type: instructions
+    required: true
+  - type: conversation
+    length: 2-3 minutes
+    required: true
+  - type: visual_questions
+    count: 5
+    required: true
+  - type: outro
+    required: true
+  conversation_structure:
+    min_exchanges: 15
+    max_duration: 180
+    speaker_count: 2
+    context_types:
+    - apartment_search
+    - service_inquiry
+    - planning_meeting

@@ -1,0 +1,632 @@
+/* ===================================
+   THEME: Your Brand (Energetic/Gold)
+   =================================== */
+.theme-energetic {
+    --primary: #d4af37;
+    --secondary: #1e293b;
+    --accent: #ec4899;
+    --background: #fef3c7;
+    --text: #1f2937;
+}
+
+.theme-energetic .theme-container {
+    background: linear-gradient(135deg, var(--background) 0%, #fde68a 100%);
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.theme-energetic .theme-intro-panel {
+    background: linear-gradient(135deg, var(--primary) 0%, #b8860b 100%);
+    color: white;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.theme-energetic .intro-title {
+    font-size: 3em;
+    font-weight: 800;
+    margin-bottom: 0.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.theme-energetic .channel-name {
+    font-size: 2em;
+    color: var(--accent);
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.theme-energetic .theme-content-panel {
+    background: white;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.theme-energetic .content-text {
+    background: linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%);
+    padding: 2rem;
+    border-radius: 20px;
+    font-size: 1.8em;
+    line-height: 1.6;
+    border: 3px solid var(--primary);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+}
+
+.theme-energetic .task-number {
+    background: var(--accent);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+/* ===================================
+   THEME: Professional Academic
+   =================================== */
+.theme-professional {
+    --primary: #1e40af;
+    --secondary: #1e293b;
+    --accent: #059669;
+    --background: #f8fafc;
+    --text: #1f2937;
+}
+
+.theme-professional .theme-container {
+    background: var(--background);
+    font-family: 'Georgia', serif;
+}
+
+.theme-professional .theme-intro-panel {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.theme-professional .intro-title {
+    font-size: 2.5em;
+    font-weight: 400;
+    margin-bottom: 1em;
+    letter-spacing: 0.05em;
+}
+
+.theme-professional .channel-name {
+    font-size: 1.5em;
+    color: var(--accent);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+}
+
+.theme-professional .theme-content-panel {
+    background: white;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem;
+}
+
+.theme-professional .content-text {
+    background: #f1f5f9;
+    padding: 2.5rem;
+    border-radius: 8px;
+    font-size: 1.6em;
+    line-height: 1.8;
+    border-left: 4px solid var(--primary);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.theme-professional .task-number {
+    background: var(--primary);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3em;
+    font-weight: 600;
+    margin-right: 1rem;
+}
+
+/* ===================================
+   THEME: Minimalist Clean
+   =================================== */
+.theme-minimalist {
+    --primary: #6b7280;
+    --secondary: #374151;
+    --accent: #10b981;
+    --background: #ffffff;
+    --text: #111827;
+}
+
+.theme-minimalist .theme-container {
+    background: var(--background);
+    font-family: 'SF Pro Display', -apple-system, sans-serif;
+}
+
+.theme-minimalist .theme-intro-panel {
+    background: var(--background);
+    color: var(--text);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid #e5e7eb;
+}
+
+.theme-minimalist .intro-title {
+    font-size: 2.2em;
+    font-weight: 300;
+    margin-bottom: 1em;
+    color: var(--secondary);
+}
+
+.theme-minimalist .channel-name {
+    font-size: 1.3em;
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.theme-minimalist .theme-content-panel {
+    background: var(--background);
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.theme-minimalist .content-text {
+    background: #f9fafb;
+    padding: 2rem;
+    border-radius: 4px;
+    font-size: 1.5em;
+    line-height: 1.7;
+    border: 1px solid #e5e7eb;
+    color: var(--text);
+}
+
+.theme-minimalist .task-number {
+    background: var(--accent);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-right: 1rem;
+}
+
+/* ===================================
+   THEME: German Cultural
+   =================================== */
+.theme-german {
+    --primary: #dd0000;
+    --secondary: #000000;
+    --accent: #ffce00;
+    --background: #ffffff;
+    --text: #1f2937;
+}
+
+.theme-german .theme-container {
+    background: linear-gradient(135deg, var(--background) 0%, #fef3c7 100%);
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+.theme-german .theme-intro-panel {
+    background: linear-gradient(45deg, var(--secondary) 33%, var(--primary) 33%, var(--primary) 66%, var(--accent) 66%);
+    color: white;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.theme-german .intro-title {
+    font-size: 2.8em;
+    font-weight: 700;
+    margin-bottom: 0.5em;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.theme-german .channel-name {
+    font-size: 1.8em;
+    color: var(--accent);
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+}
+
+.theme-german .theme-content-panel {
+    background: white;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.theme-german .content-text {
+    background: linear-gradient(135deg, #fff9e6 0%, #fef3c7 100%);
+    padding: 2.2rem;
+    border-radius: 12px;
+    font-size: 1.7em;
+    line-height: 1.6;
+    border: 2px solid var(--primary);
+    box-shadow: 0 8px 24px rgba(221, 0, 0, 0.15);
+}
+
+.theme-german .task-number {
+    background: var(--primary);
+    color: white;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-right: 1rem;
+    border: 2px solid var(--accent);
+}
+
+/* ===================================
+   SHARED QUESTION PANEL STYLES
+   =================================== */
+.theme-energetic .theme-question-panel,
+.theme-professional .theme-question-panel,
+.theme-minimalist .theme-question-panel,
+.theme-german .theme-question-panel {
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+}
+
+.theme-energetic .question-text {
+    font-size: 1.8em;
+    margin-bottom: 2rem;
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+.theme-professional .question-text {
+    font-size: 1.6em;
+    margin-bottom: 2rem;
+    color: var(--text);
+    font-weight: 400;
+}
+
+.theme-minimalist .question-text {
+    font-size: 1.5em;
+    margin-bottom: 2rem;
+    color: var(--text);
+    font-weight: 300;
+}
+
+.theme-german .question-text {
+    font-size: 1.7em;
+    margin-bottom: 2rem;
+    color: var(--secondary);
+    font-weight: 600;
+}
+
+/* ===================================
+   OPTION STYLING (ALL THEMES)
+   =================================== */
+.theme-energetic .option {
+    background: white;
+    margin: 1rem 0;
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.theme-energetic .option:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateX(10px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+}
+
+.theme-professional .option {
+    background: #f8fafc;
+    margin: 0.8rem 0;
+    padding: 1.2rem;
+    border-radius: 6px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.2s ease;
+}
+
+.theme-professional .option:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.theme-minimalist .option {
+    background: #f9fafb;
+    margin: 0.5rem 0;
+    padding: 1rem;
+    border-radius: 4px;
+    border: 1px solid #d1d5db;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    transition: background 0.2s ease;
+}
+
+.theme-minimalist .option:hover {
+    background: #f3f4f6;
+    border-color: var(--accent);
+}
+
+.theme-german .option {
+    background: white;
+    margin: 1rem 0;
+    padding: 1.3rem;
+    border-radius: 8px;
+    border: 2px solid var(--secondary);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.3s ease;
+}
+
+.theme-german .option:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--accent);
+    transform: scale(1.02);
+}
+
+/* ===================================
+   PROGRESS BAR THEMING
+   =================================== */
+.theme-energetic .theme-progress {
+    background: rgba(212, 175, 55, 0.2);
+}
+
+.theme-energetic .theme-progress-bar {
+    background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+}
+
+.theme-professional .theme-progress {
+    background: rgba(30, 64, 175, 0.1);
+}
+
+.theme-professional .theme-progress-bar {
+    background: var(--primary);
+}
+
+.theme-minimalist .theme-progress {
+    background: #f3f4f6;
+}
+
+.theme-minimalist .theme-progress-bar {
+    background: var(--accent);
+}
+
+.theme-german .theme-progress {
+    background: rgba(221, 0, 0, 0.1);
+}
+
+.theme-german .theme-progress-bar {
+    background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 50%, var(--accent) 100%);
+}
+
+/* ===================================
+   INDICATOR THEMING
+   =================================== */
+.theme-energetic #sync-timer {
+    background: rgba(0,0,0,0.8);
+    color: var(--accent);
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.theme-professional #sync-timer {
+    background: var(--primary);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.theme-minimalist #sync-timer {
+    background: white;
+    color: var(--text);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    border: 1px solid #e5e7eb;
+    font-family: monospace;
+}
+
+.theme-german #sync-timer {
+    background: var(--secondary);
+    color: var(--accent);
+    padding: 0.8rem 1.5rem;
+    border-radius: 20px;
+    font-family: monospace;
+    font-weight: bold;
+    border: 2px solid var(--accent);
+}
+
+/* ===================================
+   AUDIO INDICATOR THEMING
+   =================================== */
+.theme-energetic #sync-audio-indicator {
+    background: var(--accent);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.theme-professional #sync-audio-indicator {
+    background: var(--accent);
+    color: white;
+    padding: 0.6rem 1.2rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.theme-minimalist #sync-audio-indicator {
+    background: var(--accent);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9em;
+}
+
+.theme-german #sync-audio-indicator {
+    background: var(--primary);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 2px solid var(--accent);
+}
+
+/* ===================================
+   THINKING TIME INDICATOR THEMING
+   =================================== */
+.theme-energetic #sync-thinking-indicator {
+    background: var(--secondary);
+    color: var(--accent);
+    padding: 1rem 2rem;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    animation: bounce 1s infinite;
+}
+
+.theme-professional #sync-thinking-indicator {
+    background: var(--secondary);
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.theme-minimalist #sync-thinking-indicator {
+    background: var(--secondary);
+    color: white;
+    padding: 0.7rem 1.3rem;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95em;
+}
+
+.theme-german #sync-thinking-indicator {
+    background: var(--secondary);
+    color: var(--accent);
+    padding: 1rem 2rem;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    border: 2px solid var(--accent);
+    animation: bounce 1s infinite;
+}
+
+/* ===================================
+   ANIMATIONS (THEME-SPECIFIC)
+   =================================== */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { 
+        transform: translateX(-50%) translateY(0); 
+    }
+    40% { 
+        transform: translateX(-50%) translateY(-10px); 
+    }
+    60% { 
+        transform: translateX(-50%) translateY(-5px); 
+    }
+}
+
+.theme-energetic .sync-panel.active {
+    animation: energeticSlide 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes energeticSlide {
+    from {
+        opacity: 0;
+        transform: scale(0.8) rotate(-2deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.theme-professional .sync-panel.active {
+    animation: professionalFade 0.5s ease-out;
+}
+
+@keyframes professionalFade {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.theme-minimalist .sync-panel.active {
+    animation: minimalistAppear 0.3s ease;
+}
+
+@keyframes minimalistAppear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.theme-german .sync-panel.active {
+    animation: germanMarch 0.6s ease-out;
+}
+
+@keyframes germanMarch {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

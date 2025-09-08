@@ -4,8 +4,8 @@
     "skill": "Hörverstehen",
     "teil": 1,
     "format": "teil1_combined_display_with_transitions",
-    "ubung": 1,
-    "title": "Goethe A2 Hörverstehen - Teil1 - Übung 1",
+    "ubung": 9,
+    "title": "Goethe A2 Hörverstehen - Teil 1 - Übung 9",
     "template_name": "teil1_flexible"
   },
   "instructions": {
@@ -38,8 +38,8 @@
       "id": "answer_1",
       "type": "answer_reveal",
       "task_number": 1,
-      "correct_answer": "b",
-      "answer_text": "20 Euro"
+      "correct_answer": "c",
+      "answer_text": "Wolkig und windig"
     },
     {
       "id": "transition_2",
@@ -57,8 +57,8 @@
       "id": "answer_2",
       "type": "answer_reveal",
       "task_number": 2,
-      "correct_answer": "a",
-      "answer_text": "Um 16 Uhr"
+      "correct_answer": "b",
+      "answer_text": "Mittwoch um 14:30 Uhr"
     },
     {
       "id": "transition_3",
@@ -77,7 +77,7 @@
       "type": "answer_reveal",
       "task_number": 3,
       "correct_answer": "b",
-      "answer_text": "Wegen Regen"
+      "answer_text": "Morgen ab 15 Uhr"
     },
     {
       "id": "transition_4",
@@ -95,8 +95,8 @@
       "id": "answer_4",
       "type": "answer_reveal",
       "task_number": 4,
-      "correct_answer": "a",
-      "answer_text": "Die Brille"
+      "correct_answer": "c",
+      "answer_text": "300 Euro"
     },
     {
       "id": "transition_5",
@@ -114,8 +114,8 @@
       "id": "answer_5",
       "type": "answer_reveal",
       "task_number": 5,
-      "correct_answer": "c",
-      "answer_text": "Sonnig"
+      "correct_answer": "b",
+      "answer_text": "Montags und mittwochs"
     },
     {
       "id": "transition_end",
@@ -130,95 +130,11 @@
   "content": [
     {
       "number": 1,
-      "context": "Nachricht von der Bäckerei",
-      "setup": "Sie hören eine Nachricht von der Bäckerei.",
+      "context": "Wettervorhersage im Fernsehen",
+      "setup": "Sie hören den Wetterbericht im Fernsehen.",
       "type": "monologue",
       "speakers": {
-        "Bäckerei": {
-          "voice_name": "Marlene",
-          "engine": "neural",
-          "fallback_engines": [
-            "standard"
-          ],
-          "language": "de-DE",
-          "gender": "female",
-          "speaking_rate": "medium",
-          "role": "service_provider"
-        }
-      },
-      "text": "Hallo! Ihre Torte ist fertig. Sie kostet zwanzig Euro.",
-      "speaker": "Bäckerei"
-    },
-    {
-      "number": 2,
-      "context": "Ansage in der Bibliothek",
-      "setup": "Sie hören eine Durchsage in der Bibliothek.",
-      "type": "monologue",
-      "speakers": {
-        "Bibliothek": {
-          "voice_name": "Vicki",
-          "engine": "neural",
-          "fallback_engines": [
-            "standard"
-          ],
-          "language": "de-DE",
-          "gender": "female",
-          "speaking_rate": "medium",
-          "role": "service_provider"
-        }
-      },
-      "text": "Die Bibliothek schließt heute um sechzehn Uhr.",
-      "speaker": "Bibliothek"
-    },
-    {
-      "number": 3,
-      "context": "Nachricht vom Sportverein",
-      "setup": "Sie hören eine Nachricht vom Sportverein.",
-      "type": "monologue",
-      "speakers": {
-        "Trainer": {
-          "voice_name": "Hans",
-          "engine": "neural",
-          "fallback_engines": [
-            "standard"
-          ],
-          "language": "de-DE",
-          "gender": "male",
-          "speaking_rate": "medium",
-          "role": "service_provider"
-        }
-      },
-      "text": "Das Training fällt morgen aus wegen Regen.",
-      "speaker": "Trainer"
-    },
-    {
-      "number": 4,
-      "context": "Nachricht vom Optiker",
-      "setup": "Sie hören eine Nachricht vom Optiker.",
-      "type": "monologue",
-      "speakers": {
-        "Optiker": {
-          "voice_name": "Daniel",
-          "engine": "neural",
-          "fallback_engines": [
-            "standard"
-          ],
-          "language": "de-DE",
-          "gender": "male",
-          "speaking_rate": "medium",
-          "role": "service_provider"
-        }
-      },
-      "text": "Ihre Brille ist fertig und kann abgeholt werden.",
-      "speaker": "Optiker"
-    },
-    {
-      "number": 5,
-      "context": "Wetterbericht im Radio",
-      "setup": "Sie hören den Wetterbericht im Radio.",
-      "type": "monologue",
-      "speakers": {
-        "Moderator": {
+        "Moderatorin": {
           "voice_name": "Marlene",
           "engine": "neural",
           "fallback_engines": [
@@ -230,92 +146,178 @@
           "role": "broadcaster"
         }
       },
-      "text": "Heute wird es sonnig mit fünfundzwanzig Grad.",
-      "speaker": "Moderator"
+      "text": "Das Wetter für die nächsten Tage: Heute bleibt es kalt und regnerisch bei 9 Grad. Morgen scheint endlich wieder die Sonne und es wird 16 Grad warm. Am Donnerstag kommen dann wieder dunkle Wolken und es wird sehr windig. Die Temperaturen fallen auf 11 Grad zurück.",
+      "speaker": "Moderatorin"
+    },
+    {
+      "number": 2,
+      "context": "Nachricht vom Friseur",
+      "setup": "Sie hören eine Sprachnachricht von Ihrem Friseur.",
+      "type": "monologue",
+      "speakers": {
+        "Friseurin": {
+          "voice_name": "Vicki",
+          "engine": "generative",
+          "fallback_engines": [
+            "neural",
+            "standard"
+          ],
+          "language": "de-DE",
+          "gender": "female",
+          "speaking_rate": "medium",
+          "role": "service_provider"
+        }
+      },
+      "text": "Hallo! Hier ist der Friseursalon Bella. Wir müssen Ihren Termin am Dienstag leider verschieben. Unsere Friseurin ist krank geworden. Können Sie stattdessen am Mittwoch um 14:30 Uhr kommen? Rufen Sie uns bitte zurück und bestätigen Sie den neuen Termin. Vielen Dank!",
+      "speaker": "Friseurin"
+    },
+    {
+      "number": 3,
+      "context": "Ansage im Hotel",
+      "setup": "Sie hören eine Durchsage im Hotel.",
+      "type": "monologue",
+      "speakers": {
+        "Hotelmitarbeiter": {
+          "voice_name": "Daniel",
+          "engine": "generative",
+          "fallback_engines": [
+            "neural",
+            "standard"
+          ],
+          "language": "de-DE",
+          "gender": "male",
+          "speaking_rate": "medium",
+          "role": "service_provider"
+        }
+      },
+      "text": "Liebe Hotelgäste, das Frühstück wird täglich von 7 bis 10 Uhr im Restaurant im 2. Stock serviert. Die Sauna ist heute wegen Wartungsarbeiten geschlossen. Morgen ist sie wieder ab 15 Uhr geöffnet. An der Rezeption erhalten Sie Stadtpläne und Informationen über Sehenswürdigkeiten.",
+      "speaker": "Hotelmitarbeiter"
+    },
+    {
+      "number": 4,
+      "context": "Sprachnachricht vom Autohaus",
+      "setup": "Sie hören eine Nachricht vom Autohaus.",
+      "type": "monologue",
+      "speakers": {
+        "Automechaniker": {
+          "voice_name": "Hans",
+          "engine": "neural",
+          "fallback_engines": [
+            "standard"
+          ],
+          "language": "de-DE",
+          "gender": "male",
+          "speaking_rate": "medium",
+          "role": "service_provider"
+        }
+      },
+      "text": "Guten Tag! Ihr Auto ist zur Inspektion fertig. Sie können es heute bis 17 Uhr abholen oder morgen ab 8 Uhr. Die Inspektion hat 180 Euro gekostet. Wir haben auch die Reifen gewechselt - das kostet zusätzlich 120 Euro. Bringen Sie bitte Ihren Fahrzeugschein mit.",
+      "speaker": "Automechaniker"
+    },
+    {
+      "number": 5,
+      "context": "Nachricht von der Volkshochschule",
+      "setup": "Sie hören eine Nachricht von der Volkshochschule.",
+      "type": "monologue",
+      "speakers": {
+        "VHS_Mitarbeiterin": {
+          "voice_name": "Marlene",
+          "engine": "neural",
+          "fallback_engines": [
+            "standard"
+          ],
+          "language": "de-DE",
+          "gender": "female",
+          "speaking_rate": "medium",
+          "role": "service_provider"
+        }
+      },
+      "text": "Hallo! Der Computerkurs für Anfänger beginnt nächste Woche am Montag um 18 Uhr in Raum 15. Der Kurs findet immer montags und mittwochs statt und dauert 6 Wochen. Sie brauchen keinen eigenen Laptop. Bitte melden Sie sich bis Freitag an der Anmeldung an.",
+      "speaker": "VHS_Mitarbeiterin"
     }
   ],
   "questions": [
     {
       "number": 1,
-      "question": "Was kostet die Torte?",
+      "question": "Wie wird das Wetter am Donnerstag?",
       "answer_type": "text",
       "options": {
-        "a": "15 Euro",
-        "b": "20 Euro",
-        "c": "25 Euro"
+        "a": "Sonnig und 16 Grad",
+        "b": "Regnerisch und 9 Grad",
+        "c": "Wolkig und windig"
+      },
+      "correct_answer": "c"
+    },
+    {
+      "number": 2,
+      "question": "Wann ist der neue Termin?",
+      "answer_type": "text",
+      "options": {
+        "a": "Dienstag um 14:30 Uhr",
+        "b": "Mittwoch um 14:30 Uhr",
+        "c": "Wenn die Friseurin gesund ist"
       },
       "correct_answer": "b"
     },
     {
-      "number": 2,
-      "question": "Wann schließt die Bibliothek heute?",
-      "answer_type": "text",
-      "options": {
-        "a": "Um 16 Uhr",
-        "b": "Um 17 Uhr",
-        "c": "Um 18 Uhr"
-      },
-      "correct_answer": "a"
-    },
-    {
       "number": 3,
-      "question": "Warum fällt das Training aus?",
+      "question": "Wann ist die Sauna wieder geöffnet?",
       "answer_type": "text",
       "options": {
-        "a": "Wegen Krankheit",
-        "b": "Wegen Regen",
-        "c": "Wegen Feiertag"
+        "a": "Heute ab 15 Uhr",
+        "b": "Morgen ab 15 Uhr",
+        "c": "Von 7 bis 10 Uhr"
       },
       "correct_answer": "b"
     },
     {
       "number": 4,
-      "question": "Was kann abgeholt werden?",
+      "question": "Wie viel kostet alles zusammen?",
       "answer_type": "text",
       "options": {
-        "a": "Die Brille",
-        "b": "Die Uhr",
-        "c": "Das Hörgerät"
+        "a": "180 Euro",
+        "b": "120 Euro",
+        "c": "300 Euro"
       },
-      "correct_answer": "a"
+      "correct_answer": "c"
     },
     {
       "number": 5,
-      "question": "Wie wird das Wetter heute?",
+      "question": "An welchen Tagen findet der Kurs statt?",
       "answer_type": "text",
       "options": {
-        "a": "Regnerisch",
-        "b": "Bewölkt",
-        "c": "Sonnig"
+        "a": "Nur montags",
+        "b": "Montags und mittwochs",
+        "c": "6 Wochen lang"
       },
-      "correct_answer": "c"
+      "correct_answer": "b"
     }
   ],
   "solutions": [
     {
       "number": 1,
-      "answer": "b",
-      "description": "20 Euro"
+      "answer": "c",
+      "description": "Wolkig und windig"
     },
     {
       "number": 2,
-      "answer": "a",
-      "description": "Um 16 Uhr"
+      "answer": "b",
+      "description": "Mittwoch um 14:30 Uhr"
     },
     {
       "number": 3,
       "answer": "b",
-      "description": "Wegen Regen"
+      "description": "Morgen ab 15 Uhr"
     },
     {
       "number": 4,
-      "answer": "a",
-      "description": "Die Brille"
+      "answer": "c",
+      "description": "300 Euro"
     },
     {
       "number": 5,
-      "answer": "c",
-      "description": "Sonnig"
+      "answer": "b",
+      "description": "Montags und mittwochs"
     }
   ]
 }

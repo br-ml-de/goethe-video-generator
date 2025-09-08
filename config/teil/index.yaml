@@ -1,0 +1,8 @@
+available_teile:
+- 1
+- 2
+- 3
+- 4
+config_version: '1.0'
+description: Goethe A2 Teil configuration system
+last_updated: '2024-12-19'

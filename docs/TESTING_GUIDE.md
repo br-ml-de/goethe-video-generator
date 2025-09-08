@@ -292,6 +292,34 @@ ls output/videos/
 ---
 
 ## 🔄 **Component 4: Complete Pipeline**
+# Step 1: Convert user JSON to production JSON (with gender enhancement)
+python scripts/convert_content.py content/teil1/test-content/test_user_input.json
+
+# Step 2: Generate audio with smart voice distribution
+python scripts/generate_audio.py content/teil1/production-ready/test_user_input_production.json
+
+# Step 3: Generate synchronized video
+python scripts/generate_video_synchronized.py content/teil1/production-ready/test_user_input_production.json
+
+# or as a one-liner
+python scripts/convert_content.py content/teil1/test-content/test_user_input.json && \
+python scripts/generate_audio.py content/teil1/production-ready/test_user_input_production.json && \
+python scripts/generate_video_synchronized.py content/teil1/production-ready/test_user_input_production.json && \
+echo "🎉 Complete Pipeline Success!"
+
+
+
+# Make sure everything is set up correctly
+python scripts/synchronized_pipeline.py --check-prereqs
+
+# Test if synchronization components work
+python scripts/synchronized_pipeline.py content/teil1/test-content/test_user_input.json --test-sync --verbose
+
+# Generate video with detailed timing output
+python scripts/generate_video_synchronized.py content/teil1/production-ready/test_user_input_production.json --verbose
+
+# Complete pipeline: User JSON → Final MP4
+python scripts/synchronized_pipeline.py content/teil1/test-content/test_user_input.json --verbose
 
 ### Prereqs
 # 1. Install FFmpeg (required for audio-video combination)
@@ -349,6 +377,35 @@ tests/test_complete_pipeline.py         # End-to-end tests
 
 # 2. Run the full integration test
 python scripts/complete_pipeline.py content/teil1/user-submissions/test_user_input.json --verbose
+
+# Complete Pipeline Test
+# 1. Clean previous output (optional)
+rm -rf output/audio/test_user_input_production/
+rm -rf output/videos/test_user_input*
+rm -rf output/final/test_user_input*
+
+# 2. Convert user content to production format
+python scripts/convert_content.py content/teil1/test-content/test_user_input.json
+
+# 3. Generate audio with 5s thinking time + 2s buffers
+python scripts/generate_audio.py content/teil1/production-ready/test_user_input_production.json
+
+# 4. Generate silent video with synchronized timing
+python scripts/generate_video_synchronized.py content/teil1/production-ready/test_user_input_production.json
+
+# 5. Create final MP4 with synchronized audio
+python scripts/sync_audio_video.py content/teil1/production-ready/test_user_input_production.json
+
+
+# Synchronzied Pipeline
+# Run the complete pipeline
+python scripts/synchronized_pipeline.py content/teil1/test-content/test_user_input.json
+
+# Or with verbose output to see everything
+python scripts/synchronized_pipeline.py content/teil1/test-content/test_user_input.json --verbose
+
+
+
 
 
 #### **1. Single File Pipeline Test**
@@ -438,7 +495,8 @@ cat output/audio/test_user_input_production/audio_sequence.json | grep -A5 -B5 "
 # Check the overall sequence structure
 cat output/audio/test_user_input_production/audio_sequence.json | jq '.sequence[] | {type: .type, start_time: .start_time}'
 
-
+# Regenerate the final video with intro/outro support
+python scripts/sync_audio_video.py content/teil1/production-ready/test_user_input_production.json
 
 
 #### **Import Errors**

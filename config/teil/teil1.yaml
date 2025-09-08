@@ -1,0 +1,92 @@
+name: Teil 1 - Short Monologues
+description: Five short texts with multiple choice questions
+timing:
+  thinking_time: 5.0
+  pause_between_plays: 3.0
+  transition_duration: 2.5
+  answer_reveal_pause: 2.0
+  intro_duration: 15.0
+  instructions_pause: 1.0
+  outro_duration: 15.0
+  task_setup_pause: 0.5
+  question_to_answer_pause: 1.0
+  instructions_buffer: 2.0    
+  task_start_buffer: 2.0       
+audio:
+  text_play_count: 2
+  question_play_count: 1
+  instruction_play_count: 1
+  voice_preferences:
+    instructor:
+      gender: female
+      primary_voice: Marlene
+    service_provider:
+      gender: mixed
+      distribution: balanced
+    customer:
+      gender: mixed
+      distribution: balanced
+    announcer:
+      gender: female
+      primary_voice: Vicki
+  engine_hierarchy:
+  - generative
+  - neural
+  - standard
+  fallback_strategy: cascade
+  sample_rate: '22050'
+  format: mp3
+  normalize_volume: true
+visual:
+  base_template: teil1_base.html
+  default_theme: energetic
+  available_themes:
+  - energetic
+  - professional
+  - minimalist
+  - german
+  show_question_numbers: true
+  show_progress_bar: true
+  show_timer: false
+  transition_animations: true
+  content_display_mode: combined
+  answer_reveal_mode: immediate
+  background_style: gradient
+  font_size: medium
+  contrast_mode: normal
+structure:
+  sections:
+  - type: intro
+    required: true
+  - type: instructions
+    required: true
+  - type: combined_tasks
+    count: 5
+    required: true
+  - type: outro
+    required: true
+  task_pattern:
+  - transition
+  - combined_task
+  - answer_reveal
+  text_length_range:
+  - 30
+  - 40
+  question_options: 3
+  required_contexts:
+  - service_announcement
+  - business_message
+  - public_announcement
+  - personal_message
+  - weather_news
+educational:
+  skill_focus: basic_comprehension
+  cefr_level: A2
+  vocabulary_complexity: everyday
+  passing_score: 0.6
+  feedback_mode: immediate
+  mistake_analysis: false
+  difficulty_adaptive: false
+  speed_options:
+  - normal
+  repeat_options: true
